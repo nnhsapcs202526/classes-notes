@@ -20,17 +20,49 @@ public class MileageTracker
      *          best practice is not to immediately intitialize instance variables (do so in constructor)
      */
     private int distanceDriven;      // in units of miles
-    
-
-
-
-
-
+    private int fuelConsumed;        // in units of gallons
+    private String vin;              // vehicle identification number
 
     
     /*
      * 3. Define the constructor(s) to initialize objects:
+     *      responsible for initializing newly created objects
+     *      invoked automatically via the new operator
+     *      name of the constructor must match the class name
+     *      has no return type (not even void)
+     *      multiple constructors may be defines by a class
+     *      one constructor may call another constructor (with restrictions)
+     *      
      */
+    
+    /**
+     * Default constructor (meaning no parameters) for the MileageTracker class.
+     *      Initializes the object's miles driven and fuel consumed to 0 and the VIN to null.
+     */
+    public MileageTracker()
+    {
+        /*
+         * The 'this' reserved word references the current object (like 'self' in Python).
+         *      It's usage is encouraged but not always required.
+         */
+        this.distanceDriven = 0;
+        this.fuelConsumed = 0;
+        this.vin = null;
+    }
+    
+    /**
+     * Constructs a new MileageTracker object with the specified milesDriven and fuelConsumed.
+     * 
+     * @param intialDistanceDriven the number of miles already driven
+     * @param intialFuelConsumed the number of gallons of fuel already consumed
+     */
+    public MileageTracker(int initialDistanceDriven, int intialFuelConsumed)
+    {
+        this.distanceDriven = initialDistanceDriven;
+        this.fuelConsumed = intialFuelConsumed;
+        this.vin = null;
+    }
+    
     
     
     
@@ -122,6 +154,18 @@ public class MileageTracker
     public void setVIN(String vin)
     {
         //vin = vin;
+    }
+    
+    
+    public static void main()
+    {
+        MileageTracker car = new MileageTracker();
+        System.out.println(car);
+        
+        MileageTracker car2 = new MileageTracker(10000, 1000);
+        System.out.println(car2);
+        
+        
     }
 }
 
