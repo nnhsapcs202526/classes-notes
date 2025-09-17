@@ -23,23 +23,51 @@ public class MileageTracker
     private int fuelConsumed;    // in units of gallons
     private String vin;          // vehicle id #
 
-
-
-
-
-    
     /*
      * 3. Define the constructor(s) to initialize objects:
+     *      responsible for intializing newly created objects
+     *      invoked automatically via the 'new' operator
+     *      name of the constructor must match the class name (e.g., MileageTracker)
+     *      has no return type (not even void)
+     *      multiple constructors may be defined for a class
+     *      one constructor may call another constructor (with restrictions)
+     * 
      */
     
+    /**
+     * Default constructor for the MileageTracker class.
+     * 
+     *      Initializes the object's miles driven and fuel consumed to zero.  Set's vin to null.
+     */
+    public MileageTracker()
+    {
+        /*
+         * The "this" reserved word reference to the current object (like "self" in Python).
+         *      It's usage is encouraged, but not always required.
+         */
+        this.distanceDriven = 0;
+        this.fuelConsumed = 0;
+        this.vin = null;
+        System.out.println("Default constructor executing...");
+    }
+    
+    /**
+     * Constructs a MileageTracker object with the intial miles driven and fuel consumed to specified values.
+     *      vin will still be set to null.
+     *      
+     * @param intialDistanceDriven the number of miles driven already
+     * @param intialFuelConsumed the amount of fuel already consumed
+     */
+    public MileageTracker(int initialDistanceDriven, int initialFuelConsumed)
+    {
+        this.distanceDriven = initialDistanceDriven;
+        this.fuelConsumed = initialFuelConsumed;
+        this.vin = null;
+        System.out.println("Other constructor executing...");
+    }
     
     
-    
-    
-    
-    
-    
-    /*
+     /*
      * 1. Define methods by specifying:
      *      the visibility (e.g., public or private)
      *      the return type (e.g., void, int, double, Turtle, etc.)
@@ -122,6 +150,18 @@ public class MileageTracker
     {
         //vin = vin;
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
 
 
