@@ -21,24 +21,48 @@ public class MileageTracker
     private int distanceDriven;
     private int fuelConsumed;
     private String vin;
-
-
-
-
-
-
-    
+  
     /*
      * 3. Define the constructor(s) to initialize objects:
+     *      responsible for intializing newly created objects
+     *      invoked automatically via the new operator
+     *      name of the constructor has to match the class name
+     *      has no return type, not even void
+     *      mulitple constructors may be written and defined for a class
+     *      one constructor can call another (with restrictions)
      */
     
+    /**
+     * Default constructor (no parameters) for the MileageTracker class.
+     *      Initializes the instance variables for fuel consumed and miles driven to 0; intializes vin to null.
+     */
+    public MileageTracker()
+    {
+        /*
+         * The 'this' keyword references the current object (same as 'self' in Python).
+         *      It's usage is not required (usually), but encouraged.
+         */
+        this.distanceDriven = 0;
+        this.fuelConsumed = 0;
+        this.vin = null;
+        System.out.println("Executing default constructor for a MileageTracker... ");
+    }
     
+    /**
+     * Constructs a new MileageTracker with an initial distance driven and fuel consumed; intializes vin to null.
+     * 
+     * @param intialDistanceDriven the intial distance driven for the car
+     * @param intialFuelConsumed the initial fuel consumed by the car
+     */
+    public MileageTracker(int initialDistanceDriven, int initialFuelConsumed)
+    {
+        this.distanceDriven = initialDistanceDriven;
+        this.fuelConsumed = initialFuelConsumed;
+        this.vin = null;
+        System.out.println("Executing other constructor for a MileageTracker... ");
+    }
     
-    
-    
-    
-    
-    
+
     /*
      * 1. Define methods by specifying:
      *      the visibility (e.g., public, private)
@@ -123,6 +147,9 @@ public class MileageTracker
     {
         //vin = vin;
     }
+    
+    
+    
 }
 
 
