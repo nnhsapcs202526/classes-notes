@@ -78,7 +78,8 @@ public class MileageTracker
      */
     public void incrementDistanceDriven(int miles)  // method header or signature
     {
-        // implement later
+        this.distanceDriven += miles;
+        //this.distanceDriven = this.distanceDriven + miles;  // same as above
     }
     
     /**
@@ -89,7 +90,7 @@ public class MileageTracker
     public int getDistanceDriven()
     {
         // implement later
-        return 0;
+        return this.distanceDriven;
     }
     
     
@@ -100,7 +101,7 @@ public class MileageTracker
      */
     public void incrementFuelConsumed(int gallons)
     {
-        //this.fuelConsumed += gallons;
+        this.fuelConsumed += gallons;
     }
     
     /**
@@ -110,8 +111,8 @@ public class MileageTracker
      */
     public int getFuelConsumed()
     {
-        //return this.fuelConsumed;
-        return 0;
+        return this.fuelConsumed;
+        
     }
     
     
@@ -122,9 +123,8 @@ public class MileageTracker
      */
     public int getMileage()
     {
-        //int mileage = this.fuelConsumed / this.distanceDriven;
-        //return mileage;
-        return 0;
+        int mileage = this.distanceDriven / this.fuelConsumed;
+        return mileage;
     }
     
     /**
@@ -134,8 +134,8 @@ public class MileageTracker
      */
     public String getVIN()
     {
-        //return this.vin;
-        return "";
+        return this.vin;
+    
     }
     
     /**
@@ -143,9 +143,28 @@ public class MileageTracker
      * 
      * @param vin    the vehicle identification (VIN) of this car
      */
-    public void setVIN(String vin)
+    public void setVIN(String newVIN)
     {
-        //vin = vin;
+        /*
+         * WHen the parameter was named 'vin' is "shadows" the instance varaible 'vin'.
+         * 
+         * Local and paramter variables of the same name as instance variables can cause tricky bugs.
+         * 
+         * To refer to the instance variable explicitly using 'this'.
+         * 
+         * Even better, name parameter, local, and instance variables unique names.
+         */
+        
+        //bad
+        //vin = vin
+        
+        // better
+        //this.vin = vin;
+        
+        // best practice - name local and instance variables different names
+        this.vin = newVIN;
+        
+        
     }
     
     
