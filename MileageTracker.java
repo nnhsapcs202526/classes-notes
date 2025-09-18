@@ -82,9 +82,10 @@ public class MileageTracker
      */
     public void incrementDistanceDriven(int miles)  // method header or method signature
     {
-        // to implement later
+        this.distanceDriven += miles;
+        //this.distanceDriven = this.distanceDriven + miles;  // same as above
     }
-    
+      
     /**
      * Returns the total number of miles driven.
      * 
@@ -92,7 +93,7 @@ public class MileageTracker
      */
     public int getDistanceDriven()
     {
-        return 0;  // to implement later        
+        return this.distanceDriven;  
     }
     
     
@@ -103,7 +104,7 @@ public class MileageTracker
      */
     public void incrementFuelConsumed(int gallons)
     {
-        //this.fuelConsumed += gallons;
+        this.fuelConsumed += gallons;
     }
     
     /**
@@ -113,8 +114,7 @@ public class MileageTracker
      */
     public int getFuelConsumed()
     {
-        //return this.fuelConsumed;
-        return 0;
+        return this.fuelConsumed;
     }
     
     
@@ -125,9 +125,8 @@ public class MileageTracker
      */
     public int getMileage()
     {
-        //int mileage = this.fuelConsumed / this.distanceDriven;
-        //return mileage;
-        return 0;
+        int mileage = this.distanceDriven / this.fuelConsumed;
+        return mileage;
     }
     
     /**
@@ -137,8 +136,7 @@ public class MileageTracker
      */
     public String getVIN()
     {
-        //return this.vin;
-        return "";
+        return this.vin;
     }
     
     /**
@@ -146,22 +144,31 @@ public class MileageTracker
      * 
      * @param vin    the vehicle identification (VIN) of this car
      */
-    public void setVIN(String vin)
+    public void setVIN(String newVIN)
     {
+        /*
+         * When the parameter is named 'vin', is "shadows" the instance variable 'vin'.  In this code,
+         *  'vin' would refer to the parameter and not the instance variable.
+         *  
+         *  Local and parameter variables "shadow" instance varibales of the same name. 
+         *  
+         *  To refer explicitly to the instance variable, use 'this'.
+         *  
+         *  Best practice: avoid this issue altogether and give local, parameter, and instance variables
+         *      unique names!
+         */
+        
+        // bad
         //vin = vin;
+        
+        // better
+        this.vin = vin;
+        
+        // best practice
+        this.vin = newVIN;
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
 }
 
 

@@ -16,6 +16,9 @@ public class MileageTrackerClient
         MileageTracker car2 = new MileageTracker(10000, 1000);
         System.out.println(car2);
         
+        MileageTracker car3 = new MileageTracker();
+        System.out.println(car3);
+        
         BankAccount ba = new BankAccount();
         
     }
