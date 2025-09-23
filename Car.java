@@ -12,6 +12,7 @@ public class Car
 {
    private int xLeft;
    private int yTop;
+   private Color color;
 
    /**
       Constructs a car with a given top left corner.
@@ -22,6 +23,20 @@ public class Car
    {
       this.xLeft = initialX;
       this.yTop = initialY;
+      this.color = Color.RED;
+   }
+   
+   /**
+      Constructs a car with a given top left corner.
+      @param x the x coordinate of the top left corner
+      @param y the y coordinate of the top left corner
+      @param initialColor the color of the car body
+   */
+   public Car(int initialX, int initialY, Color initialColor)
+   {
+      this.xLeft = initialX;
+      this.yTop = initialY;
+      this.color = initialColor;
    }
 
    /**
@@ -50,7 +65,7 @@ public class Car
       Line2D.Double rearWindshield = new Line2D.Double(r3, r4);
       
       // draws the car
-      g2.setColor(Color.RED);
+      g2.setColor(this.color);
       g2.fill(body);
       g2.setColor(Color.BLACK);
       g2.fill(frontTire);
