@@ -13,7 +13,7 @@ public class CashRegisterTester
 
       double change = register.giveChange();
 
-      System.out.println(change);      
+      System.out.println(change);    // line 6  
       System.out.println("Expected: 11.25");          
    }
 }
