@@ -13,9 +13,12 @@ public class CaesarCipherDemo
         System.out.println("CaesarCipher class demo:\n");
 
 	// demo of overflow error
-	
+	int n = 1000000;
+	System.out.println("Integer overflow: " + n * n);
 
 	// demo of floating point imprecision
+	double f = 4.35;
+	System.out.println("Floating point improcision: " + 100 * f);
 	
 
         /*
@@ -35,7 +38,7 @@ public class CaesarCipherDemo
          *  When we create a Scanner object, we have to specify the input stream
          *      (e.g., System.in which is the terminal input).
          */
-        
+        Scanner s = new Scanner(System.in);
         
         /*
          * Best practices:
@@ -44,21 +47,26 @@ public class CaesarCipherDemo
          *          prompt and not on a new line
          *      3. leave a space after the prompt
          */
-        System.out.print("Enter the text to encrypt: ");
+        System.out.print("\nEnter the text to encrypt: ");
         
         /*
          * The nextLine method returns all characters up to the end of the line
          *      (e.g., where the user typed enter)
          */
+        String text = s.nextLine();
+        text = text.toUpperCase();
+        System.out.println("Plain-text: " + text);
 
         
-        System.out.print("Enter the keyphrase (no spaces): ");
+        System.out.print("\nEnter the keyphrase (no spaces): ");
         
         /*
          * The next method returns the next token in the stream as a String
          */
+        String keyphrase = s.next().toUpperCase();  // chaining methods
+        System.out.println("Keyphrase: " + keyphrase);
 
-        System.out.print("Enter the number of seconds to test a guessed keyphrase: ");
+        System.out.print("\nEnter the number of seconds to test a guessed keyphrase: ");
         
         /*
          * The nextInt method attempts to convert the next token in the stream to an int
@@ -67,6 +75,22 @@ public class CaesarCipherDemo
          *      
          *  The nextDouble method behaves in the same way for doubles.
          */
+        int secondsPerGuess = s.nextInt();
+        System.out.println("Seconds per guess: " + secondsPerGuess);
+        
+        CaesarCipher cipher = new CaesarCipher(keyphrase);
+        String complexityDesc = cipher.getComplexityDescription(secondsPerGuess);
+        System.out.println("Complexity: " + complexityDesc);
+        
+        String encryptedText = cipher.encrypt(text);
+        System.out.println("Encrypted text: " + encryptedText);
+        
+        
+        
+        
+        
+        
+        
         
     }
 }
