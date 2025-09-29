@@ -13,9 +13,13 @@ public class CaesarCipherDemo
         System.out.println("CaesarCipher class demo:\n");
 
 	// demo of overflow error
+	int n = 1000000;
+	System.out.println("Integer Overflow: " + n * n);
 	
-
+	
 	// demo of floating point imprecision
+	double f = 4.35;
+	System.out.println("floating point imprecision: " + 100 * f);
 	
 
         /*
@@ -35,7 +39,7 @@ public class CaesarCipherDemo
          *  When we create a Scanner object, we have to specify the input stream
          *      (e.g., System.in which is the terminal input).
          */
-        
+        Scanner s = new Scanner(System.in);
         
         /*
          * Best practices:
@@ -50,6 +54,8 @@ public class CaesarCipherDemo
          * The nextLine method returns all characters up to the end of the line
          *      (e.g., where the user typed enter)
          */
+        String text = s.nextLine().toUpperCase();       // chaining methods
+        System.out.println("User entered text is: " + text);
 
         
         System.out.print("Enter the keyphrase (no spaces): ");
@@ -57,7 +63,11 @@ public class CaesarCipherDemo
         /*
          * The next method returns the next token in the stream as a String
          */
-
+        String keyphrase = s.next();
+        keyphrase = keyphrase.toUpperCase();
+        System.out.println("User entered keyphrase is: " + keyphrase);
+        
+        
         System.out.print("Enter the number of seconds to test a guessed keyphrase: ");
         
         /*
@@ -67,6 +77,26 @@ public class CaesarCipherDemo
          *      
          *  The nextDouble method behaves in the same way for doubles.
          */
+        int secondsPerGuess = s.nextInt();
+        System.out.println("User entered seconds to guess is: " + secondsPerGuess);
+        
+        CaesarCipher cipher = new CaesarCipher(keyphrase);
+        String complexityDesc = cipher.getComplexityDescription(secondsPerGuess);
+        System.out.println("Complexity: " + complexityDesc);
+        
+        
+        String encryptedText = cipher.encrypt(text);
+        System.out.println("Encrypted: " + encryptedText);
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
     }
 }
