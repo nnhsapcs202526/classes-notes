@@ -18,11 +18,11 @@ public class CaesarCipher
      */
     private static final String ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     
-    private String keyphrase;
+    private String keyphrase;  // JAVA => JAV
     
     public CaesarCipher(String initialKeyphrase)
     {
-        //this.keyphrase = initialKeyphrase;
+        //this.keyphrase = initialKeyphrase;  // normal way to initialize instance variable
         // prepare the keyphrase by removing duplicate letters
         this.compressKeyphrase(initialKeyphrase);
     }
@@ -58,7 +58,7 @@ public class CaesarCipher
 
         // one method in a class can invoke another method in the same class
         //  we invoke the method on "this"
-        long totalSeconds = 0;
+        long totalSeconds = this.calculateAverageTimeToCrack(secPerGuess);
         
         /*
          * Use integer division to calculate how many whole minutes are in the
@@ -93,14 +93,14 @@ public class CaesarCipher
          */
         long leftoverSeconds = totalSeconds % SECONDS_FOR_EVERY_MINUTE;
         
-        long wholeHours = 0;
-        long leftoverMinutes = 0;
+        long wholeHours = wholeMinutes / MINUTES_FOR_EVERY_HOUR;
+        long leftoverMinutes = wholeMinutes % MINUTES_FOR_EVERY_HOUR;
     
-        long wholeDays = 0;
-        long leftoverHours = 0;
+        long wholeDays = wholeHours / HOURS_FOR_EVERY_DAY;
+        long leftoverHours =  wholeHours % HOURS_FOR_EVERY_DAY;
     
-        long wholeYears = 0;
-        long leftoverDays = 0;
+        long wholeYears = wholeDays / DAYS_FOR_EVERY_YEAR;
+        long leftoverDays = wholeDays % DAYS_FOR_EVERY_YEAR;
     
         desc = "Average time to crack: " + wholeYears + " years, " + leftoverDays +
         " days, " + leftoverHours + " hours, " + leftoverMinutes + " minutes, " +
