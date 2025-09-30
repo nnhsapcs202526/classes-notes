@@ -22,9 +22,9 @@ public class CaesarCipher
     
     public CaesarCipher(String initialKeyphrase)
     {
-        //this.keyphrase = initialKeyphrase;  // normal way to initialize instance variable
+        this.keyphrase = initialKeyphrase;  // normal way to initialize instance variable
         // prepare the keyphrase by removing duplicate letters
-        this.compressKeyphrase(initialKeyphrase);
+        //this.compressKeyphrase(initialKeyphrase);
     }
     
     /**
