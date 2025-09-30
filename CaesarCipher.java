@@ -22,7 +22,7 @@ public class CaesarCipher
     
     public CaesarCipher(String initialKeyphrase)
     {
-        //this.keyphrase = initialKeyphrase;
+        //this.keyphrase = initialKeyphrase;  // normally we would do this
         // prepare the keyphrase by removing duplicate letters
         this.compressKeyphrase(initialKeyphrase);
     }
@@ -58,7 +58,7 @@ public class CaesarCipher
 
         // one method in a class can invoke another method in the same class
         //  we invoke the method on "this"
-        long totalSeconds = 0;
+        long totalSeconds = this.calculateAverageTimeToCrack(secPerGuess);
         
         /*
          * Use integer division to calculate how many whole minutes are in the
@@ -72,6 +72,7 @@ public class CaesarCipher
          *  For example:
          *      3 / 4 => 0          (3 and 4 are int literals)
          *      3.0 / 4 => 0.75     (3.0 is a double literal)
+         *      3 / 4 => 0  (stored as a double it would be 0.0)
          */
         long wholeMinutes = totalSeconds / SECONDS_FOR_EVERY_MINUTE;
         
@@ -93,8 +94,8 @@ public class CaesarCipher
          */
         long leftoverSeconds = totalSeconds % SECONDS_FOR_EVERY_MINUTE;
         
-        long wholeHours = 0;
-        long leftoverMinutes = 0;
+        long wholeHours = wholeMinutes / MINUTES_FOR_EVERY_HOUR;
+        long leftoverMinutes = wholeMinutes % MINUTES_FOR_EVERY_HOUR;
     
         long wholeDays = 0;
         long leftoverHours = 0;
