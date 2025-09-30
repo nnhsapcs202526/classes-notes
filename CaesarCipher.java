@@ -5,8 +5,8 @@ import java.util.Scanner;
  *      Caesar Cipher.
  *      (as described in The Code Book by Simon Singh)
  *
- * @author 
- * @version 
+ * @author mrcallaghan
+ * @version 30sep2025
  */
 public class CaesarCipher
 {
@@ -22,7 +22,7 @@ public class CaesarCipher
     
     public CaesarCipher(String initialKeyphrase)
     {
-        //this.keyphrase = initialKeyphrase;
+        //this.keyphrase = initialKeyphrase;  // usually way to initialize
         // prepare the keyphrase by removing duplicate letters
         this.compressKeyphrase(initialKeyphrase);
     }
@@ -43,6 +43,8 @@ public class CaesarCipher
          *      
          *      public static final double PI = 3.141592654;
          *      
+         *      using the value of pi:  Math.PI
+         *      
          *  Declare a constant with the final keyword.
          *      By convention, constants are in all caps with underscores.
          */
@@ -58,7 +60,7 @@ public class CaesarCipher
 
         // one method in a class can invoke another method in the same class
         //  we invoke the method on "this"
-        long totalSeconds = 0;
+        long totalSeconds = this.calculateAverageTimeToCrack(secPerGuess);
         
         /*
          * Use integer division to calculate how many whole minutes are in the
@@ -70,8 +72,8 @@ public class CaesarCipher
          *      floating-point division when one or both operands are floating-point types.
          *      
          *  For example:
-         *      3 / 4 => 0          (3 and 4 are int literals)
-         *      3.0 / 4 => 0.75     (3.0 is a double literal)
+         *      3 / 4 => 0          (3 and 4 are int literals)  integer division
+         *      3.0 / 4 => 0.75     (3.0 is a double literal)   double division
          */
         long wholeMinutes = totalSeconds / SECONDS_FOR_EVERY_MINUTE;
         
