@@ -22,9 +22,9 @@ public class CaesarCipher
     
     public CaesarCipher(String initialKeyphrase)
     {
-        //this.keyphrase = initialKeyphrase;  // usually way to initialize
+        this.keyphrase = initialKeyphrase;  // usually way to initialize
         // prepare the keyphrase by removing duplicate letters
-        this.compressKeyphrase(initialKeyphrase);
+        //this.compressKeyphrase(initialKeyphrase);
     }
     
     /**
@@ -95,14 +95,14 @@ public class CaesarCipher
          */
         long leftoverSeconds = totalSeconds % SECONDS_FOR_EVERY_MINUTE;
         
-        long wholeHours = 0;
-        long leftoverMinutes = 0;
+        long wholeHours = wholeMinutes / MINUTES_FOR_EVERY_HOUR;
+        long leftoverMinutes = wholeMinutes % MINUTES_FOR_EVERY_HOUR;
     
-        long wholeDays = 0;
-        long leftoverHours = 0;
+        long wholeDays = wholeHours / HOURS_FOR_EVERY_DAY;
+        long leftoverHours = wholeHours % HOURS_FOR_EVERY_DAY;
     
-        long wholeYears = 0;
-        long leftoverDays = 0;
+        long wholeYears = wholeDays / DAYS_FOR_EVERY_YEAR;
+        long leftoverDays = wholeDays % DAYS_FOR_EVERY_YEAR;
     
         desc = "Average time to crack: " + wholeYears + " years, " + leftoverDays +
         " days, " + leftoverHours + " hours, " + leftoverMinutes + " minutes, " +
@@ -117,7 +117,7 @@ public class CaesarCipher
          *  
          *  Java only automatically performs widening conversions.
          */
-        double yearsAsDecimal = 0;
+        double yearsAsDecimal = totalSeconds;
         
         /*
          * Arithmetic Promotion
@@ -134,7 +134,8 @@ public class CaesarCipher
          *  This promotion may be too late! If the multiplication overflows an int,
          *      the wrong value will be promoted to a long and stored.
          */
-        final long SECONDS_FOR_EVERY_YEAR = 0;
+        final long SECONDS_FOR_EVERY_YEAR = SECONDS_FOR_EVERY_MINUTE * MINUTES_FOR_EVERY_HOUR * HOURS_FOR_EVERY_DAY *
+            DAYS_FOR_EVERY_YEAR;
     
         /*
          * In this example, the value of SECONDS_FOR_EVERY_YEAR is promoted to a double
@@ -144,7 +145,7 @@ public class CaesarCipher
          *  The local variable SECONDS_FOR_EVERY_YEAR is still a long and still has
          *      the same value.
          */
-        yearsAsDecimal = yearsAsDecimal / SECONDS_FOR_EVERY_YEAR;
+        yearsAsDecimal = yearsAsDecimal / SECONDS_FOR_EVERY_YEAR;  // widening conversion
         desc += "or " + yearsAsDecimal + " years\n";
         
         /*
@@ -161,7 +162,7 @@ public class CaesarCipher
          *  The following divides yearsAsDecimal by 10, then rounds the resulting long
          *      to an int
          */
-        int decades = 0;
+        int decades = (int) ((yearsAsDecimal / 10) + 0.5);
         
         /*
          * However, you cannot always cast a value to another type. For example,
