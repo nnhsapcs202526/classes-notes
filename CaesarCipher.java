@@ -22,9 +22,10 @@ public class CaesarCipher
     
     public CaesarCipher(String initialKeyphrase)
     {
-        this.keyphrase = initialKeyphrase;  // normal way to initialize instance variable
+        //this.keyphrase = initialKeyphrase;  // normal way to initialize instance variable
         // prepare the keyphrase by removing duplicate letters
-        //this.compressKeyphrase(initialKeyphrase);
+        this.compressKeyphrase(initialKeyphrase);
+        System.out.println("Compressed keyphrase: " + this.keyphrase);
     }
     
     /**
@@ -189,9 +190,9 @@ public class CaesarCipher
          * length
          *      returns the number of characters in the string
          */
-        int keyphraseLength = 0;
+        int keyphraseLength = initKeyphrase.length();
         
-        for(int i = 0; i < keyphraseLength; i++)
+        for(int i = 0; i < keyphraseLength; i++)  // access each character in the keyphrase
         {
             /*
              * substring
@@ -204,7 +205,7 @@ public class CaesarCipher
              *  
              *  length: 6
              */
-            
+            String letter = initKeyphrase.substring(i, i + 1);  // first loop is "CAESAR".substring(0,1)  => "C"
             
             /*
              * substring
@@ -221,7 +222,7 @@ public class CaesarCipher
              *  
              *  length: 6
              */
-            
+            String restOfKeyphrase = initKeyphrase.substring(i + 1);
             
             /*
              * indexOf
@@ -237,7 +238,7 @@ public class CaesarCipher
              *  
              *  For example, restOfKeyphrase("SA") => returns 2
              */
-            
+            int index = restOfKeyphrase.indexOf(letter);
             
             /*
              * String concatenation
@@ -251,6 +252,10 @@ public class CaesarCipher
              *  int x = 7;
              *  String xAsString = "" + x;          // xAsString => "7"
              */
+            if(index == -1)  // if the letter is not a duplicate
+            {
+                this.keyphrase += letter;
+            }
             
         }
     }
