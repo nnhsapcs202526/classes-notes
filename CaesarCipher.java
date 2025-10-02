@@ -22,9 +22,10 @@ public class CaesarCipher
     
     public CaesarCipher(String initialKeyphrase)
     {
-        this.keyphrase = initialKeyphrase;  // normally we would do this
+        //this.keyphrase = initialKeyphrase;  // normally we would do this, but our keyphrase may have duplicate letters
         // prepare the keyphrase by removing duplicate letters
-        //this.compressKeyphrase(initialKeyphrase);
+        this.compressKeyphrase(initialKeyphrase);
+        System.out.println("Compressed keyphrase: " + this.keyphrase);
     }
     
     /**
@@ -190,9 +191,9 @@ public class CaesarCipher
          * length
          *      returns the number of characters in the string
          */
-        int keyphraseLength = 0;
+        int keyphraseLength = initKeyphrase.length();
         
-        for(int i = 0; i < keyphraseLength; i++)
+        for(int i = 0; i < keyphraseLength; i++)  // accesses each individual character in the keyphrase, one at a time
         {
             /*
              * substring
@@ -205,7 +206,7 @@ public class CaesarCipher
              *  
              *  length: 6
              */
-            
+            String letter = initKeyphrase.substring(i, i + 1);  // first loop, args would 0 and 1
             
             /*
              * substring
@@ -222,7 +223,8 @@ public class CaesarCipher
              *  
              *  length: 6
              */
-            
+            String restOfKeyphrase = initKeyphrase.substring(i + 1);
+            // same as: initKeyphrase.substring(i + 1, initKeyphrase.length());
             
             /*
              * indexOf
@@ -238,7 +240,7 @@ public class CaesarCipher
              *  
              *  For example, restOfKeyphrase("SA") => returns 2
              */
-            
+            int index = restOfKeyphrase.indexOf(letter);
             
             /*
              * String concatenation
@@ -252,6 +254,12 @@ public class CaesarCipher
              *  int x = 7;
              *  String xAsString = "" + x;          // xAsString => "7"
              */
+            if(index == -1)  // if the letter is not a duplicate!
+            {
+                this.keyphrase += letter;
+                // same as: this.keyphrase = this.keyphrase + letter;
+            
+            }
             
         }
     }
