@@ -12,14 +12,13 @@ public class CaesarCipherDemo
     {
         System.out.println("CaesarCipher class demo:\n");
 
-	// demo of overflow error
-	int n = 1000000;
-	System.out.println("Integer overflow: " + n * n);
+        // demo of overflow error
+        int n = 1000000;
+        System.out.println("Integer overflow: " + n * n);
 
-	// demo of floating point imprecision
-	double f = 4.35;
-	System.out.println("Floating point improcision: " + 100 * f);
-	
+        // demo of floating point imprecision
+        double f = 4.35;
+        System.out.println("Floating point improcision: " + 100 * f);
 
         /*
          * A Scanner object parses primitive types and Strings from a stream.
@@ -39,7 +38,7 @@ public class CaesarCipherDemo
          *      (e.g., System.in which is the terminal input).
          */
         Scanner s = new Scanner(System.in);
-        
+
         /*
          * Best practices:
          *      1. prompt the user for what you want them to input
@@ -48,7 +47,7 @@ public class CaesarCipherDemo
          *      3. leave a space after the prompt
          */
         System.out.print("\nEnter the text to encrypt: ");
-        
+
         /*
          * The nextLine method returns all characters up to the end of the line
          *      (e.g., where the user typed enter)
@@ -57,17 +56,18 @@ public class CaesarCipherDemo
         text = text.toUpperCase();
         System.out.println("Plain-text: " + text);
 
-        
         System.out.print("\nEnter the keyphrase (no spaces): ");
-        
         /*
          * The next method returns the next token in the stream as a String
          */
         String keyphrase = s.next().toUpperCase();  // chaining methods
         System.out.println("Keyphrase: " + keyphrase);
+        
+        String randKeyphrase = CaesarCipher.generateKeyphrase(keyphrase.length());
+        System.out.println("Random keyphrase of same length: " + randKeyphrase);
 
         System.out.print("\nEnter the number of seconds to test a guessed keyphrase: ");
-        
+
         /*
          * The nextInt method attempts to convert the next token in the stream to an int
          *      and returns the value. If the next token cannot be converted, an
@@ -77,18 +77,16 @@ public class CaesarCipherDemo
          */
         int secondsPerGuess = s.nextInt();
         System.out.println("Seconds per guess: " + secondsPerGuess);
-        
-        CaesarCipher cipher = new CaesarCipher(keyphrase);
+
+        CaesarCipher cipher = new CaesarCipher(randKeyphrase);
         String complexityDesc = cipher.getComplexityDescription(secondsPerGuess);
         System.out.println("Complexity: " + complexityDesc);
-        
+
         String encryptedText = cipher.encrypt(text);
         System.out.println("Encrypted text: " + encryptedText);
         
         
-        
-        
-        
+
         
         
         

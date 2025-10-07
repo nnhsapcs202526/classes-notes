@@ -358,6 +358,17 @@ public class CaesarCipher
         return worstCaseTimeToCrack/2;
     }
     
+    /*
+     * This method is static and, therefore, is independent of objects.
+     * 
+     * As a result, this method may be invoked without any CasearCipher instances.  Instead,
+     *      we invoke this mehtod on the class itself.  e.g., 
+     *      
+     *      CasesarCipher.generateKeyphrase(7);
+     *      
+     * The limitation is that this mehtod cannot access any instance variables or invoke and non-static methods.
+     *      i.e., there is no "this"
+     */
     /**
      * Generates a pseudorandom keyphrase of the specified length in characters
      * 
@@ -383,6 +394,8 @@ public class CaesarCipher
              *  A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
              *  0 1 2 3 4 5 6    ...                              25    <= indices
              */
+            int letterIndex = (int)(Math.random() * 26);
+            keyphrase += CaesarCipher.ALPHABET.substring(letterIndex, letterIndex + 1); 
             
         }
         
