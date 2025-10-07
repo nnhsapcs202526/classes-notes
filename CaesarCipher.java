@@ -386,6 +386,8 @@ public class CaesarCipher
              *  A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
              *  0 1 2 3 4 5 6    ...                              25    <= indices
              */
+            int letterIndex = (int) ((Math.random() * 26));
+            keyphrase += CaesarCipher.ALPHABET.substring(letterIndex, letterIndex + 1);
             
         }
         

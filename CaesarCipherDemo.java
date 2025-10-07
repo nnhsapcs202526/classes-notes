@@ -12,15 +12,15 @@ public class CaesarCipherDemo
     {
         System.out.println("CaesarCipher class demo:\n");
 
-	// demo of overflow error
-	int n = 1000000;
-	System.out.println("Integer overflow: " + n * n);
-	
+    // demo of overflow error
+    int n = 1000000;
+    System.out.println("Integer overflow: " + n * n);
+    
 
-	// demo of floating point imprecision
-	double f = 4.35;
-	System.out.println("Floating point imprecision: " + 100 * f);
-	
+    // demo of floating point imprecision
+    double f = 4.35;
+    System.out.println("Floating point imprecision: " + 100 * f);
+    
         /*
          * A Scanner object parses primitive types and Strings from a stream.
          * 
@@ -85,9 +85,9 @@ public class CaesarCipherDemo
         String encryptedText = cipher.encrypt(text);
         System.out.println("Encrypted text: " + encryptedText);
         
-        
-        
-        
+        // generate a random keyphrase to use
+        String randKeyphrase = CaesarCipher.generateKeyphrase(5);
+        System.out.println("Random keyphrase: " + randKeyphrase);
         
         
     }
