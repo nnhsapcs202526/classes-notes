@@ -88,6 +88,10 @@ public class CaesarCipherDemo
         String encryptedText = cipher.encrypt(text);
         System.out.println("Encrypted: " + encryptedText);
         
+        // using the static method generateKeyphrase
+        String randKeyphrase = CaesarCipher.generateKeyphrase(10);
+        System.out.println("random keyphrase: " + randKeyphrase);
+        
 
         
     }
