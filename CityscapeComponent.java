@@ -6,14 +6,14 @@ import javax.swing.JComponent;
  * Class that creates instances of the classes that comprise the cityscape and delegates drawing the
  *  cityscape to these object.
  * 
- * @author 
+ * @author mcallaghan
  * @version 
  */
 public class CityscapeComponent extends JComponent
 {
     // declare the objects in your Cityscape as instance variables
     // ...
-    
+    //private Building building1;
     
     
     // define the CityscapeComponent constructor and intiailize all instance variables
@@ -33,6 +33,7 @@ public class CityscapeComponent extends JComponent
         
         // invoke the draw method on each object in your Cityscape
         // ...
+        //this.building1.draw(g2);  // draws the building!
         
         
     }
@@ -45,7 +46,7 @@ public class CityscapeComponent extends JComponent
     {
         // update the objects in the cityscape so they are animated
         // ...
-        
+        //this.car.moveRight(); // moves the car right a designated amount each frame
         
         
         // request that the Java Runtime repaints this component by invoking its paintComponent method
