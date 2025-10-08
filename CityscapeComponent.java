@@ -16,7 +16,7 @@ public class CityscapeComponent extends JComponent
     
     
     
-    // define the CityscapeComponent constructor and intiailize all instance variables
+    // define the CityscapeComponent constructor and initializes all instance variables
     // ...
     
     
@@ -33,7 +33,7 @@ public class CityscapeComponent extends JComponent
         
         // invoke the draw method on each object in your Cityscape
         // ...
-        
+        //this.building.draw(g2);  // just an example
         
     }
     
@@ -45,7 +45,7 @@ public class CityscapeComponent extends JComponent
     {
         // update the objects in the cityscape so they are animated
         // ...
-        
+        //this.car.moveRight();  // just an example
         
         
         // request that the Java Runtime repaints this component by invoking its paintComponent method
