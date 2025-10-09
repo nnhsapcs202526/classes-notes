@@ -39,8 +39,8 @@ public class CityscapeViewer
         // animate the cityscape
         for( int seconds = 0; seconds < ANIMATION_TIME_IN_SECONDS; seconds++ )
         {
-            component.nextFrame();
-            Thread.sleep( 1000 );
+            component.nextFrame(); // proceed to next frame in the animation
+            Thread.sleep( 1000 );  // pause for 1 second
         }
         
     }

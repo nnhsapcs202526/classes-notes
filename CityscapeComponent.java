@@ -13,6 +13,7 @@ public class CityscapeComponent extends JComponent
 {
     // declare the objects in your Cityscape as instance variables
     // ...
+    private Car car1;
     
     
     
@@ -33,6 +34,7 @@ public class CityscapeComponent extends JComponent
         
         // invoke the draw method on each object in your Cityscape
         // ...
+        //this.car1.draw(g2);  // draw each object every frame
         
         
     }
@@ -45,12 +47,12 @@ public class CityscapeComponent extends JComponent
     {
         // update the objects in the cityscape so they are animated
         // ...
-        
+        //this.car1.driveRight(); // move the car to the right a specified amount
         
         
         // request that the Java Runtime repaints this component by invoking its paintComponent method
         //  do not explicitly invoke the paintComponent method
-        repaint();
+        repaint();  // stays as last line of method
     }
 
 }
